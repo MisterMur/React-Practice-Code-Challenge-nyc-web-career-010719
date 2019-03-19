@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import SushiContainer from './containers/SushiContainer';
 import Table from './containers/Table';
+import SushiWallet from './components/SushiWallet'
 
 // Endpoint!
 const API = "http://localhost:3000/sushis"
@@ -47,6 +48,18 @@ class App extends Component {
       return 'Your Broke GTFO'
     }
    }
+   handleSubmit=(e)=>{
+     e.preventDefault()
+     console.log(e.target)
+     this.setState({balance:(this.state.balance+e.target.value)})
+
+   }
+   handleChange=(e)=>{
+     e.preventDefault()
+     console.log(e.target)
+     this.setState({balance:(this.state.balance+e.target.value)})
+
+   }
 
   render() {
     // debugger
@@ -61,6 +74,11 @@ class App extends Component {
         />
         <Table
           sushisEatten={this.state.sushisEatten}
+          balance={this.state.balance}
+        />
+        <SushiWallet
+          handleChange={this.handleChange}
+          handleSubmit={this.handleSubmit}
           balance={this.state.balance}
         />
       </div>
