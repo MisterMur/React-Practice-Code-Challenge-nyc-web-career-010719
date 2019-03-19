@@ -1,20 +1,24 @@
 import React, { Fragment } from 'react'
 
 const Sushi = (props) => {
+  // console.log('yes i already ate this sushi',props.sushisEatten.includes(props.sushi))
+  // debugger
   return (
     <div className="sushi">
-      <div className="plate" 
-           onClick={/* Give me a callback! */ null}>
-        { 
-          /* Tell me if this sushi has been eaten! */ 
-          true ?
+      <div className="plate"
+           onClick={()=>props.handleSushiEat(props.sushi)}>
+
+        {
+          /* Tell me if this sushi has been eaten! */
+          props.sushisEatten.includes(props.sushi)
+          ?
             null
           :
-            <img src={/* Give me an image source! */} width="100%" />
+            <img src={props.sushi.img_url} width="100%" />
         }
       </div>
       <h4 className="sushi-details">
-        {/* Give me a name! */} - ${/* Give me a price! */}
+        {props.sushi.name} - ${props.sushi.price}
       </h4>
     </div>
   )
